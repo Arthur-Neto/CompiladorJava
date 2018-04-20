@@ -21,6 +21,8 @@ public class TabelaTokens {
         this.tabelaTokens.add(token);
     }
     
+    
+    
 //    public TipoToken tipoToken(Simbolo simbolo){
 //        if(simbolo.getNome().equalsIgnoreCase("+") || simbolo.getNome().equalsIgnoreCase("-") || simbolo.getNome().equalsIgnoreCase("/") || simbolo.getNome().equalsIgnoreCase("*")) {
 //            return TipoToken.OPERADOR;
@@ -30,5 +32,13 @@ public class TabelaTokens {
 //        
 //        return TipoToken.
 //    }
+
+    public List<Token> getTabelaTokens() {
+        return tabelaTokens;
+    }
+
+    public void setTabelaTokens(List<Token> tabelaTokens) {
+        this.tabelaTokens = tabelaTokens;
+    }
     
 }

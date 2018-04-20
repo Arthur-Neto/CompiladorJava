@@ -9,14 +9,9 @@ import Infra.TabelaTokens;
  * @author Arthur
  */
 public class FramePrincipal extends javax.swing.JFrame {
-
-    TabelaSimbolos _tabelaSimbolos;
-    TabelaTokens _tabelaTokens;
     
     public FramePrincipal() {
         initComponents();
-        _tabelaTokens = new TabelaTokens();
-        _tabelaSimbolos = new TabelaSimbolos();
     }
 
    @SuppressWarnings("unchecked")
@@ -159,8 +154,15 @@ public class FramePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilarActionPerformed
-        AnalisadorLexico analisador = new AnalisadorLexico(_tabelaSimbolos, _tabelaTokens);
-        //_tabelaSimbolos = analisador.criarTabelaSimbolos(jTextAreaCodigo.getText());
+        AnalisadorLexico analisador = new AnalisadorLexico(new TabelaSimbolos(), new TabelaTokens());
+        analisador.criarTabelas(jTextAreaCodigo.getText());
+        for (Object object : AnalisadorLexico._tabelaSimbolos.getTabelaSimbolos()) {
+            
+        }
+        for (Object object : AnalisadorLexico._tabelaTokens.getTabelaTokens()) {
+            
+        }
+        
     }//GEN-LAST:event_jButtonCompilarActionPerformed
 
     public static void main(String args[]) {
