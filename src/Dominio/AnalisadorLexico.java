@@ -300,6 +300,10 @@ public class AnalisadorLexico {
                     break;
                 default:
                     if(Character.isDigit(codigo.charAt(i))){
+                        if (!Character.isLetter(codigo.charAt(i))) {
+                            i--;
+                            break;
+                        }
                         while(estado != -1){
                         lexema += codigo.charAt(i);
                         estado = tabelaTransicao[estado][0];
@@ -314,6 +318,10 @@ public class AnalisadorLexico {
                     }
                     else if(Character.isLetter(codigo.charAt(i))){
                         while(estado != -1){
+                            if (!Character.isLetter(codigo.charAt(i))) {
+                                i--;
+                                break;
+                            }
                         lexema += codigo.charAt(i);
                         estado = tabelaTransicao[estado][1];
                         i++;

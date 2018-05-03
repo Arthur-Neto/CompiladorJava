@@ -4,9 +4,6 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/CompiladorJava-master/src/Forms/FramePrincipal.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/CompiladorJava-master/src/Dominio/Token.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/CompiladorJava-master/src/Dominio/Simbolo.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/CompiladorJava-master/src/Infra/TabelaTokens.java</file>
             <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/CompiladorJava-master/src/Forms/TokenTableModel.java</file>
             <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/CompiladorJava-master/src/Dominio/AnalisadorLexico.java</file>
         </group>
