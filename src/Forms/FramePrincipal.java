@@ -1,8 +1,9 @@
 package Forms;
 
 import Dominio.AnalisadorLexico;
-import Infra.TabelaSimbolos;
-import Infra.TabelaTokens;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -55,11 +56,11 @@ public class FramePrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "tipo", "valor"
+                "id", "tipo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -154,17 +155,13 @@ public class FramePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilarActionPerformed
-        AnalisadorLexico analisador = new AnalisadorLexico(new TabelaSimbolos(), new TabelaTokens());
+        AnalisadorLexico analisador = new AnalisadorLexico();
         analisador.criarTabelas(jTextAreaCodigo.getText());
-        for (Object object : AnalisadorLexico._tabelaSimbolos.getTabelaSimbolos()) {
-            
-        }
-        for (Object object : AnalisadorLexico._tabelaTokens.getTabelaTokens()) {
-            
-        }
-        
+        TokenTableModel modelToken = new TokenTableModel(AnalisadorLexico._tabelaTokens.getTabelaTokens());
+        jTableTokens.setModel(modelToken);
     }//GEN-LAST:event_jButtonCompilarActionPerformed
 
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

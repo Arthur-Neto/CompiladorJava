@@ -5,7 +5,6 @@ package Dominio;
  * @author Aluno
  */
 public class Simbolo {
-    
     private String nome;
 
     public Simbolo(String nome) {

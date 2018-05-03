@@ -32,7 +32,9 @@ public class Token {
 
     @Override
     public String toString() {
-        return tipo;
+        if(this.id != 0)
+            return tipo;
+        else
+            return tipo + " , " + id;
     }
-
 }

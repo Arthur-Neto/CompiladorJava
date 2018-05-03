@@ -1,7 +1,6 @@
 package Infra;
 
 import Dominio.Simbolo;
-import Dominio.Token;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +12,16 @@ public class TabelaSimbolos {
 
     private List<Simbolo> tabelaSimbolos;
 
+    public TabelaSimbolos() {
+        this.tabelaSimbolos = new ArrayList();
+    }
+
     public List<Simbolo> getTabelaSimbolos() {
         return tabelaSimbolos;
     }
 
     public void setTabelaSimbolos(List<Simbolo> tabelaSimbolos) {
         this.tabelaSimbolos = tabelaSimbolos;
-    }
-
-    public TabelaSimbolos() {
-        this.tabelaSimbolos = new ArrayList<>();
     }
 
     public void AddSimbolo(Simbolo simbolo) {
@@ -33,15 +32,18 @@ public class TabelaSimbolos {
         for (Simbolo simbolo : tabelaSimbolos) {
             return simboloComparado.getNome().equals(simbolo.getNome());
         }
-        
+
         return false;
     }
-    
-    public boolean ComparaCharacterList(char caractere) {
-        for (Simbolo simbolo : tabelaSimbolos) {
-            return simbolo.getNome().charAt(0) == caractere;
+
+    public int GetIndexSimbolo(Simbolo simboloPesquisar) {
+        for (int i = 0; i < tabelaSimbolos.size(); i++) {
+            if (tabelaSimbolos.get(i).getNome().equalsIgnoreCase(simboloPesquisar.getNome())) {
+                return i;
+            } else {
+                return -1;
+            }
         }
-        
-        return false;
+        return -1;
     }
 }
