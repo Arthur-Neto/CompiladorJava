@@ -81,8 +81,6 @@ public class AnalisadorLexico {
     public void criarTabelas(String codigo) {
         codigo = codigo.toLowerCase();
 
-        TabelaSimbolos tabelaSimbolos = new TabelaSimbolos();
-        TabelaTokens tabelaTokens = new TabelaTokens();
         Simbolo simbolo;
 
         int estado = 0;
@@ -97,10 +95,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -111,10 +109,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -125,10 +123,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                 case ']':
@@ -138,10 +136,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -152,10 +150,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -166,10 +164,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -180,10 +178,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -194,10 +192,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -208,10 +206,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -222,10 +220,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -236,10 +234,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -250,10 +248,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -264,10 +262,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -278,10 +276,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -292,10 +290,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -306,10 +304,10 @@ public class AnalisadorLexico {
                         i++;
                     }
                     simbolo = new Simbolo(lexema);
-                    if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        tabelaSimbolos.AddSimbolo(simbolo);
+                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                        _tabelaSimbolos.AddSimbolo(simbolo);
                     }
-                    tabelaTokens.addToken(new Token(0, lexema));
+                    _tabelaTokens.addToken(new Token(0, lexema));
                     lexema = "";
                     estado = 0;
                     break;
@@ -331,10 +329,10 @@ public class AnalisadorLexico {
                             i++;
                         }
                         simbolo = new Simbolo(lexema);
-                        if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                            tabelaSimbolos.AddSimbolo(simbolo);
+                        if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                            _tabelaSimbolos.AddSimbolo(simbolo);
                         }
-                        tabelaTokens.addToken(new Token(tabelaSimbolos.GetIndexSimbolo(simbolo), lexema));
+                        _tabelaTokens.addToken(new Token(_tabelaSimbolos.GetIndexSimbolo(simbolo), lexema));
                         lexema = "";
                         estado = 0;
                     } else if (Character.isLetter(codigo.charAt(i))) {
@@ -350,10 +348,10 @@ public class AnalisadorLexico {
                             i++;
                         }
                         simbolo = new Simbolo(lexema);
-                        if (!tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                            tabelaSimbolos.AddSimbolo(simbolo);
+                        if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                            _tabelaSimbolos.AddSimbolo(simbolo);
                         }
-                        tabelaTokens.addToken(new Token(tabelaSimbolos.GetIndexSimbolo(simbolo), lexema));
+                        _tabelaTokens.addToken(new Token(_tabelaSimbolos.GetIndexSimbolo(simbolo), lexema));
                         lexema = "";
                         estado = 0;
                     } else if (Character.isWhitespace(codigo.charAt(i))) {
@@ -362,8 +360,6 @@ public class AnalisadorLexico {
                     break;
             }
         }
-        _tabelaTokens = tabelaTokens;
-        _tabelaSimbolos = tabelaSimbolos;
     }
 
 }
