@@ -40,8 +40,6 @@ public class TabelaSimbolos {
         for (int i = 0; i < tabelaSimbolos.size(); i++) {
             if (tabelaSimbolos.get(i).getNome().equalsIgnoreCase(simboloPesquisar.getNome())) {
                 return i;
-            } else {
-                return -1;
             }
         }
         return -1;
