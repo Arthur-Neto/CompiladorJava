@@ -13,9 +13,10 @@ public class AnalisadorLexico {
     public static TabelaTokens _tabelaTokens;
 
     private final int[][] tabelaTransicao = {
-        // d  l (   )  [  ]  +  -  *  /  %  ,  .  :  =  >  <  " #13
+        // 0  1  2  3   4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 
+        // d  l  (   )  [  ]  +  -  *  /  %  ,  .  :  =  >  <  " #13
         {3, 1, 24, 25, 42, 41, 8, 12, 26, 16, 21, 43, 1, 44, 29, 32, 35, 38, -1},//q0
-        {2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1},//q1
+        {1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1},//q1
         {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},//q2
         {3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 4, 4, 4, 4, 4, 4},//q3
         {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},//q4
@@ -78,7 +79,7 @@ public class AnalisadorLexico {
         AnalisadorLexico._tabelaTokens = _tabelaTokens;
     }
 
-    public void criarTabelas(String codigo) {
+    public void adicionaTabela(String codigo) {
         codigo = codigo.toLowerCase();
 
         Simbolo simbolo;
@@ -87,279 +88,86 @@ public class AnalisadorLexico {
         String lexema = "";
 
         for (int i = 0; i < codigo.length(); i++) {
-            switch (codigo.charAt(i)) {
-                case '(':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][3];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
+
+            while (estado != -1) {
+
+                if (i >= codigo.length()) {
                     break;
-                case ')':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][4];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
+                }
+                if (Character.isWhitespace(codigo.charAt(i))) {
                     break;
-                case '[':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][5];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                case ']':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][5];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
+                } else if (Character.isDigit(codigo.charAt(i))) {
+                    estado = tabelaTransicao[estado][pegaColuna('d')];
+
+                } else if (Character.isLetter(codigo.charAt(i))) {
+                    estado = tabelaTransicao[estado][pegaColuna('l')];
+
+                } else {
+                    estado = tabelaTransicao[estado][pegaColuna(codigo.charAt(i))];
+                }
+                if (estado == -1) {
                     break;
-                case '+':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][6];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case '-':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][7];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case '*':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][8];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case '/':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][9];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case '%':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][10];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case ',':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][11];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case '.':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][12];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case ':':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][13];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case '=':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][14];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case '>':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][15];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case '<':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][16];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case '"':
-                    while (estado != -1) {
-                        lexema += codigo.charAt(i);
-                        estado = tabelaTransicao[estado][17];
-                        i++;
-                    }
-                    simbolo = new Simbolo(lexema);
-                    if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                        _tabelaSimbolos.AddSimbolo(simbolo);
-                    }
-                    _tabelaTokens.addToken(new Token(0, lexema));
-                    lexema = "";
-                    estado = 0;
-                    break;
-                case '\n':
-                    break;
-                case '\0':
-                    break;
-                default:
-                    if (Character.isDigit(codigo.charAt(i))) {
-                        if (i > codigo.length()) {
-                            break;
-                        }
-                        if (!Character.isLetter(codigo.charAt(i))) {
-                            break;
-                        }
-                        while (estado != -1) {
-                            lexema += codigo.charAt(i);
-                            estado = tabelaTransicao[estado][0];
-                            i++;
-                        }
-                        simbolo = new Simbolo(lexema);
-                        if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                            _tabelaSimbolos.AddSimbolo(simbolo);
-                        }
-                        _tabelaTokens.addToken(new Token(_tabelaSimbolos.GetIndexSimbolo(simbolo), lexema));
-                        lexema = "";
-                        estado = 0;
-                    } else if (Character.isLetter(codigo.charAt(i))) {
-                        while (estado != -1) {
-                            if (i >= codigo.length()) {
-                                break;
-                            }
-                            if (!Character.isLetter(codigo.charAt(i))) {
-                                break;
-                            }
-                            lexema += codigo.charAt(i);
-                            estado = tabelaTransicao[estado][1];
-                            i++;
-                        }
-                        simbolo = new Simbolo(lexema);
-                        if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
-                            _tabelaSimbolos.AddSimbolo(simbolo);
-                        }
-                        _tabelaTokens.addToken(new Token(_tabelaSimbolos.GetIndexSimbolo(simbolo), lexema));
-                        lexema = "";
-                        estado = 0;
-                    } else if (Character.isWhitespace(codigo.charAt(i))) {
-                        i++;
-                    }
-                    break;
+                }
+                lexema += codigo.charAt(i);
+                i++;
             }
+            if (!lexema.isEmpty()) {
+                simbolo = new Simbolo(lexema);
+                if (!_tabelaSimbolos.ComparaSimboloList(simbolo)) {
+                    _tabelaSimbolos.AddSimbolo(simbolo);
+                }
+                _tabelaTokens.addToken(new Token(0, lexema));
+            }
+            lexema = "";
+            estado = 0;
         }
     }
 
+    public int pegaColuna(char caracter) {
+        switch (caracter) {
+            case '(':
+                return 2;
+            case ')':
+                return 3;
+            case '[':
+                return 4;
+            case ']':
+                return 5;
+            case '+':
+                return 6;
+            case '-':
+                return 7;
+            case '*':
+                return 8;
+            case '/':
+                return 9;
+            case '%':
+                return 10;
+            case ',':
+                return 11;
+            case '.':
+                return 12;
+            case ':':
+                return 13;
+            case '=':
+                return 14;
+            case '>':
+                return 15;
+            case '<':
+                return 16;
+            case '"':
+                return 17;
+            case '\n':
+                break;
+            case '\0':
+                break;
+            case 'd':
+                return 0;
+            case 'l':
+                return 1;
+            default:
+                break;
+        }
+        return -1;
+    }
 }

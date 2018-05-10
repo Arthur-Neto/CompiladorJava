@@ -169,7 +169,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     private void jButtonCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilarActionPerformed
         AnalisadorLexico analisador = new AnalisadorLexico();
-        analisador.criarTabelas(jTextAreaCodigo.getText());
+        analisador.adicionaTabela(jTextAreaCodigo.getText());
         TokenTableModel modelToken = new TokenTableModel(AnalisadorLexico._tabelaTokens.getTabelaTokens());
         SimboloTableModel modelSimbolo = new SimboloTableModel(AnalisadorLexico._tabelaSimbolos.getTabelaSimbolos(), AnalisadorLexico._tabelaSimbolos);
         jTableSimbolos.setModel(modelSimbolo);
